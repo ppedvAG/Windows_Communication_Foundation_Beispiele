@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloWCF.Host", "HalloWCF.Host\HalloWCF.Host.csproj", "{9CB5F198-B5EE-4C49-A50C-856A59025C08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloWCF.ProxyClient", "HalloWCF.ProxyClient\HalloWCF.ProxyClient.csproj", "{3876E01D-4AAE-401F-ACDD-88C0368F52B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9CB5F198-B5EE-4C49-A50C-856A59025C08} = {9CB5F198-B5EE-4C49-A50C-856A59025C08}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{9CB5F198-B5EE-4C49-A50C-856A59025C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CB5F198-B5EE-4C49-A50C-856A59025C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CB5F198-B5EE-4C49-A50C-856A59025C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3876E01D-4AAE-401F-ACDD-88C0368F52B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3876E01D-4AAE-401F-ACDD-88C0368F52B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3876E01D-4AAE-401F-ACDD-88C0368F52B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3876E01D-4AAE-401F-ACDD-88C0368F52B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
