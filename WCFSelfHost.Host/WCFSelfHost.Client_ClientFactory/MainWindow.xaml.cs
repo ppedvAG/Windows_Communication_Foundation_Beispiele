@@ -35,6 +35,9 @@ namespace WCFSelfHost.Client_ClientFactory
 
         private void LadenWS(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Leider nicht im .NET Core :-(");
+
+            return;
             var cf = new ChannelFactory<IAutoService>(new WSHttpBinding(), new EndpointAddress("http://localhost:5"));
 
             IAutoService client = cf.CreateChannel();
@@ -79,6 +82,29 @@ namespace WCFSelfHost.Client_ClientFactory
             catch (FaultException fe)
             {
                 MessageBox.Show(fe.Message);
+            }
+        }
+
+        private void Update(object sender, RoutedEventArgs e)
+        {
+            var sel = myGrid.SelectedItem as Auto; //boxing :-(
+            if (sel != null)
+            {
+                var cf = new ChannelFactory<IAutoService>(new BasicHttpBinding(), new EndpointAddress("http://localhost.fiddler:4"));
+
+                IAutoService client = cf.CreateChannel();
+                client.UpdateAuto(sel);
+            }
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            if (myGrid.SelectedItem is Auto sel) //pattern matching :-)
+            {
+                var cf = new ChannelFactory<IAutoService>(new BasicHttpBinding(), new EndpointAddress("http://localhost.fiddler:4"));
+
+                IAutoService client = cf.CreateChannel();
+                client.DeleteAuto(sel);
             }
         }
     }

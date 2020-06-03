@@ -25,9 +25,13 @@ namespace WCFSelfHost.Host
             host.AddServiceEndpoint(typeof(IAutoService), new NetNamedPipeBinding(), "net.pipe://localhost/autos");
             host.AddServiceEndpoint(typeof(IAutoService), new BasicHttpBinding(), "http://localhost:4/");
             host.AddServiceEndpoint(typeof(IAutoService), new WSHttpBinding(), "http://localhost:5/");
+            var ep = host.AddServiceEndpoint(typeof(IAutoService), new WebHttpBinding(), "http://localhost:6/");
+            ep.EndpointBehaviors.Add(new WebHttpBehavior() { AutomaticFormatSelectionEnabled = true });
+
 
             Binding mexBinding = MetadataExchangeBindings.CreateMexTcpBinding();
             host.AddServiceEndpoint(typeof(IMetadataExchange), mexBinding, "net.tcp://localhost:1/mex");
+
 
             host.Open();
 
