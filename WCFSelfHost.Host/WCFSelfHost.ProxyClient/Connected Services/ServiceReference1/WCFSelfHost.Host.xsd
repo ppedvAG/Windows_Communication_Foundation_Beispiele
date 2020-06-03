@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFSelfHost.Host" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFSelfHost.Host" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAuto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Auto" nillable="true" type="tns:Auto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAuto" nillable="true" type="tns:ArrayOfAuto" />
+  <xs:complexType name="Auto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Farbe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hersteller" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Modell" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PS" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Auto" nillable="true" type="tns:Auto" />
+</xs:schema>
