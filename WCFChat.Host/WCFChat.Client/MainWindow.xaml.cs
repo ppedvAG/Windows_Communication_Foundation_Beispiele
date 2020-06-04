@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
@@ -27,10 +28,25 @@ namespace WCFChat.Client
         public MainWindow()
         {
             InitializeComponent();
-            userNameTb.Text = "Fred";
+            userNameTb.Text = $"Fred {Guid.NewGuid().ToString().Substring(0, 4)}";
+
+            if (!true)
+            {
+                var tcp = new NetTcpBinding();
+                tcp.MaxReceivedMessageSize = int.MaxValue;
+                cf = new DuplexChannelFactory<IServer>(this, tcp, new EndpointAddress("net.tcp://localhost:1"));
+            }
+            else
+            {
+                var wsDual = new WSDualHttpBinding();
+                cf = new DuplexChannelFactory<IServer>(this, wsDual, new EndpointAddress("http://localhost:2"));
+            }
 
             SetUi(false);
         }
+
+        DuplexChannelFactory<IServer> cf = null;
+        IServer server = null;
 
         private void SetUi(bool loggedIn)
         {
@@ -46,9 +62,7 @@ namespace WCFChat.Client
 
         private void Login(object sender, RoutedEventArgs e)
         {
-            var tcp = new NetTcpBinding();
-            var cf = new DuplexChannelFactory<IServer>(this, tcp, new EndpointAddress("net.tcp://localhost:1"));
-            var server = cf.CreateChannel();
+            server = cf.CreateChannel();
             server.Login(userNameTb.Text);
         }
 
@@ -64,7 +78,20 @@ namespace WCFChat.Client
 
         public void ShowImage(Stream image)
         {
-            throw new NotImplementedException();
+
+            var ms = new MemoryStream();
+            image.CopyTo(ms);
+            ms.Position = 0;
+
+            var vb = new Viewbox();
+
+            var img = new Image();
+            img.BeginInit();
+            img.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            img.Stretch = Stretch.None;
+            img.EndInit();
+            vb.Child = img;
+            chatLb.Items.Add(vb);
         }
 
         public void ShowText(string text)
@@ -74,7 +101,7 @@ namespace WCFChat.Client
 
         public void ShowUserlist(IEnumerable<string> users)
         {
-            throw new NotImplementedException();
+            UsersLb.ItemsSource = users;
         }
 
         public void ShowVoice(Stream voice)
@@ -84,7 +111,27 @@ namespace WCFChat.Client
 
         private void Logout(object sender, RoutedEventArgs e)
         {
+            server.Logout();
+        }
 
+        private void SendText(object sender, RoutedEventArgs e)
+        {
+            server.SendText(msgTb.Text);
+            msgTb.Clear();
+        }
+
+        private void SendImage(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog()
+            {
+                Filter = "Bilder|*.png;*.jpg|Alle Dateien|*.*"
+            };
+
+            if (dlg.ShowDialog().Value)
+            {
+                using (var file = File.OpenRead(dlg.FileName))
+                    server.SendImage(file);
+            }
         }
     }
 }

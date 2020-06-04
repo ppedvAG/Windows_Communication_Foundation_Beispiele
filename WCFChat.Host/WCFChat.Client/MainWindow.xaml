@@ -31,8 +31,8 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBox Margin="4,0" Name="msgTb"/>
-            <Button Name="sendTextBtn" Margin="4,0" Grid.Column="1">Sende Text</Button>
-            <Button Name="sendImageBtn" Margin="4,0" Grid.Column="2">Sende Image</Button>
+            <Button Click="SendText" Name="sendTextBtn" Margin="4,0" Grid.Column="1">Sende Text</Button>
+            <Button Name="sendImageBtn" Click="SendImage" Margin="4,0" Grid.Column="2">Sende Image...</Button>
             <Button Name="sendVoiceBtn" Margin="4,0" Grid.Column="3">Sende Voice</Button>
         </Grid>
 

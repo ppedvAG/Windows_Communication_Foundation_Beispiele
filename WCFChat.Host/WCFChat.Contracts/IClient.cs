@@ -18,6 +18,7 @@ namespace WCFChat.Contracts
 
         [OperationContract(IsOneWay = true)]
         void ShowUserlist(IEnumerable<string> users);
+
         [OperationContract(IsOneWay = true)]
         void LoginResponse(bool ok);
 

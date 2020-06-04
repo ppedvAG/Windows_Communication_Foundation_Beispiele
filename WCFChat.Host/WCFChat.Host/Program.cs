@@ -17,7 +17,13 @@ namespace WCFChat.Host
             var host = new ServiceHost(typeof(ChatServer));
 
             var tcp = new NetTcpBinding();
+            tcp.MaxReceivedMessageSize = int.MaxValue;
             host.AddServiceEndpoint(typeof(IServer), tcp, "net.tcp://localhost:1");
+
+            var wsDual = new WSDualHttpBinding();
+            host.AddServiceEndpoint(typeof(IServer), wsDual, "http://localhost:2");
+
+
 
             host.Open();
             Console.WriteLine("Server gestartet");
