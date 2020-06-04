@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4689d86a-2e21-4606-987a-b526ebb6abac" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/WCFSessions.Host/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1b6e0a83-cb96-41b0-a6a2-2c28b24b4d9d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFSessions.Host/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="c763d712-10e1-4372-8683-8e64ffe70678" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFSessions.Host/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="62ead44c-0dc6-42d6-a08e-bd82cf045111" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFSessions.Host/Service1/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="661023c4-6c26-4f4e-90d3-054d9e78d9e5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/WCFSessions.Host/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

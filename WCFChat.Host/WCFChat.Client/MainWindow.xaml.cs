@@ -34,7 +34,7 @@ namespace WCFChat.Client
             if (!!!!true)
             {
                 var tcp = new NetTcpBinding();
-                tcp.Security.Mode = SecurityMode.Transport;
+                tcp.Security.Mode = SecurityMode.TransportWithMessageCredential;
                 tcp.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
                 tcp.MaxReceivedMessageSize = int.MaxValue;

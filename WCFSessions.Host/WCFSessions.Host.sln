@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFSessions.Host", "WCFSessions.Host\WCFSessions.Host.csproj", "{BA10B51C-2CE3-485E-9471-A1270D3567A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFSessions.Client", "WCFSessions.Client\WCFSessions.Client.csproj", "{F30A32B1-D12B-4571-9C05-8336A36899D1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA10B51C-2CE3-485E-9471-A1270D3567A4} = {BA10B51C-2CE3-485E-9471-A1270D3567A4}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA10B51C-2CE3-485E-9471-A1270D3567A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA10B51C-2CE3-485E-9471-A1270D3567A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA10B51C-2CE3-485E-9471-A1270D3567A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA10B51C-2CE3-485E-9471-A1270D3567A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F30A32B1-D12B-4571-9C05-8336A36899D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30A32B1-D12B-4571-9C05-8336A36899D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30A32B1-D12B-4571-9C05-8336A36899D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30A32B1-D12B-4571-9C05-8336A36899D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD99D1AD-D861-48F3-9A9E-BB0924B9F3D1}
+	EndGlobalSection
+EndGlobal

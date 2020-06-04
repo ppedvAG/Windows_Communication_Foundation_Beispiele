@@ -19,7 +19,7 @@ namespace WCFChat.Host
 
             var tcp = new NetTcpBinding();
             tcp.MaxReceivedMessageSize = int.MaxValue;
-            tcp.Security.Mode = SecurityMode.Transport;
+            tcp.Security.Mode = SecurityMode.TransportWithMessageCredential;
             tcp.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
 
