@@ -1,0 +1,41 @@
+﻿<Window x:Class="WCFChat.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WCFChat.Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock>Username</TextBlock>
+            <TextBox Margin="4,0" Grid.Column="1" Name="userNameTb"/>
+            <Button Name="loginBtn" Click="Login" Grid.Column="2">Login</Button>
+            <Button Name="logoutBtn" Click="Logout" Grid.Column="3">Logout</Button>
+        </Grid>
+        <ListBox BorderThickness="1" Name="UsersLb" DockPanel.Dock="Right" Width="200"/>
+        <Grid DockPanel.Dock="Bottom" Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Margin="4,0" Name="msgTb"/>
+            <Button Name="sendTextBtn" Margin="4,0" Grid.Column="1">Sende Text</Button>
+            <Button Name="sendImageBtn" Margin="4,0" Grid.Column="2">Sende Image</Button>
+            <Button Name="sendVoiceBtn" Margin="4,0" Grid.Column="3">Sende Voice</Button>
+        </Grid>
+
+        <ListBox Name="chatLb"/>
+    </DockPanel>
+</Window>
