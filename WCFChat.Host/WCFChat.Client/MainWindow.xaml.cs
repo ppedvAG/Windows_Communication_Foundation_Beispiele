@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,15 +31,30 @@ namespace WCFChat.Client
             InitializeComponent();
             userNameTb.Text = $"Fred {Guid.NewGuid().ToString().Substring(0, 4)}";
 
-            if (!true)
+            if (!!!!true)
             {
                 var tcp = new NetTcpBinding();
+                tcp.Security.Mode = SecurityMode.Transport;
+                tcp.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+
                 tcp.MaxReceivedMessageSize = int.MaxValue;
-                cf = new DuplexChannelFactory<IServer>(this, tcp, new EndpointAddress("net.tcp://localhost:1"));
+                EndpointIdentity identity = EndpointIdentity.CreateDnsIdentity("MyROOTCert");
+                EndpointAddress address = new EndpointAddress(new Uri("net.tcp://localhost:1"), identity);
+
+
+                cf = new DuplexChannelFactory<IServer>(this, tcp, address);
+                cf.Credentials.ClientCertificate.SetCertificate(StoreLocation.CurrentUser, StoreName.Root,
+                X509FindType.FindByThumbprint, "14295bd222c188a881dbe88585333dd564a5b57a");
+                cf.Credentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.None;
+
+            
+
+
             }
             else
             {
                 var wsDual = new WSDualHttpBinding();
+                wsDual.Security.Mode = WSDualHttpSecurityMode.Message;
                 cf = new DuplexChannelFactory<IServer>(this, wsDual, new EndpointAddress("http://localhost:2"));
             }
 
